@@ -1,32 +1,64 @@
 angular.module('archApp')
-    .controller('ArchController', ['$scope', '$state', 'DatabaseEntryCache',
-        function($scope, $state, DatabaseEntryCache) {
-            function openNewView(item) {
-                $state.go(item.view);
-            }
-            function setItemsToClose() {
-                _.each($scope.sidebarItems, function(item) {
-                    item.open = false;
-                });
-            }
+    .controller('ArchController', ['$scope', 'IMAGES_BASE',
+        function($scope, IMAGES_BASE) {
+            $scope.sidebarTypeItems = [{
+                title: 'Restorani prema tipu kuhinje',
+                className: 'type-item-title'
+            }, {
+                iconClass: 'fa-chevron-right',
+                title: 'Domaca',
+                className: 'type-item-sub'
+            }, {
+                iconClass: 'fa-chevron-right',
+                title: 'Kineska',
+                className: 'type-item-sub'
+            }, {
+                iconClass: 'fa-chevron-right',
+                title: 'Meksicka',
+                className: 'type-item-sub'
+            }, {
+                iconClass: 'fa-chevron-right',
+                title: 'Indijska',
+                className: 'type-item-sub'
+            }, {
+                iconClass: 'fa-chevron-right',
+                title: 'Italijanska',
+                className: 'type-item-sub'
+            }];
 
-            $scope.goToSettingsView = function() {};
-            $scope.goToCreateNewView = function() {
-                setItemsToClose();
-                $state.go('create_new');
-            };
-            $scope.sidebarItems = [{
-                iconClass: 'fa-user-circle',
-                view: 'list_users',
-                open: false
+            $scope.sidebarTopItems = [{
+                title: 'Top 5 restorana',
+                className: 'type-item-title'
             }, {
-                iconClass: 'fa-car',
-                view: 'list_cars',
-                open: true
+                iconClass: 'fa-heart',
+                title: 'Prvi restoran',
+                className: 'type-item-sub',
+                backgroundUrl: IMAGES_BASE + 'prvi.jpg',
+                likeCount: 120
             }, {
-                iconClass: 'fa-files-o',
-                view: 'list_files',
-                open: false
+                iconClass: 'fa-heart',
+                title: 'Sad ide drugi restoran',
+                className: 'type-item-sub',
+                backgroundUrl: IMAGES_BASE + 'drugi.jpg',
+                likeCount: 234
+            }, {
+                iconClass: 'fa-heart',
+                title: 'Treci je najgori restoran',
+                className: 'type-item-sub',
+                backgroundUrl: IMAGES_BASE + 'treci.jpg',
+                likeCount: 5
+            }, {
+                iconClass: 'fa-heart',
+                title: 'Cetvrti restoran',
+                className: 'type-item-sub',
+                backgroundUrl: IMAGES_BASE + 'cetvrti.jpg',
+                likeCount: 7787
+            }, {
+                iconClass: 'fa-heart',
+                title: 'Prvi otpozadi',
+                className: 'type-item-sub',
+                backgroundUrl: IMAGES_BASE + 'peti.jpg',
+                likeCount: 622
             }];
 
             $scope.changePageView = function(item) {

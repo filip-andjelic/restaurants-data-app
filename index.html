@@ -13,25 +13,38 @@
              class="application-container arch-layout-grid">
             <!-- This is main header/toolbar for app -->
             <div id="application-toolbar" class="application-toolbar">
-                <div ng-click="goToCreateNewView()" class="toolbar-item home-item">
-                    <i class="fa fa-book"></i>
-                </div>
+                <div class="toolbar-item home-item"></div>
                 <div class="toolbar-item central-item">
-                    <span class="central-item-title">Fetching Tables Simulator</span>
+                    <span class="central-item-title">Pronadji restoran u tvojoj blizini</span>
+                    <div class="central-item-input-wrapper">
+                        <input class="input-element" type="text" placeholder="Ulica">
+                        <input class="input-element" type="text" placeholder="Grad">
+                        <div class="input-button"> Trazi </div>
+                    </div>
                 </div>
-                <div ng-click="goToSettingsView()" class="toolbar-item settings-item">
-                    <i class="fa fa-cogs"></i>
+                <div class="toolbar-item settings-item">
+                    <div class="profile-dropdown-placeholder">
+                        <span class="label"> Moj nalog </span>
+                        <i class="fa fa-chevron-down"></i>
+                    </div>
+                    <i class="fa fa-cogs configuration-item"></i>
                 </div>
             </div>
             <!-- This is wrapper for sidebar and page content -->
             <div id="application-view-wrapper" class="application-view-wrapper">
                 <!-- This is sidebar for app -->
                 <div id="application-sidebar-content" class="application-sidebar-content">
-                    <div ng-repeat="item in sidebarItems track by $index"
-                         ng-click="changePageView(item)"
-                         class="sidebar-item-container"
-                         ng-class="{'sidebar-item-open': item.open}">
-                        <i class="fa {{item.iconClass}}"></i>
+                    <div ng-repeat="item in sidebarTypeItems track by $index"
+                         class="sidebar-item-container type-item {{item.className}}"
+                         ng-class="{'last-item': $last}">
+                        <span class="item-title">{{item.title}}</span>
+                        <i ng-if="item.iconClass" class="fa {{item.iconClass}}"></i>
+                    </div>
+                    <div ng-repeat="item in sidebarTopItems track by $index"
+                         class="sidebar-item-container top-item {{item.className}}"
+                         style="background-image: url({{item.backgroundUrl}})">
+                        <span class="item-title">{{item.title}}</span>
+                        <span ng-if="item.iconClass" class="item-info"> {{item.likeCount}} <i class="heart fa {{item.iconClass}}"></i></span>
                     </div>
                 </div>
                 <!-- This is dynamic page for app content -->

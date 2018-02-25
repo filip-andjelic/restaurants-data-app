@@ -1,0 +1,71 @@
+.application-toolbar {
+  width: 100%;
+  min-width: 0;
+  display: flex;
+  height: $toolbar-fixed-height;
+  background-color: $toolbar-bg-color;
+  border-bottom: 1px solid $color_gray-light;
+
+  .toolbar-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $color_gray-dark;
+
+    &.home-item {
+      width: $sidebar-fixed-width;
+      flex: 0 0 $sidebar-fixed-width;
+    }
+    &.central-item {
+      flex: 1 1 0;
+      z-index: 2;
+
+      .central-item-title {
+        font-size: $_font-size-regular;
+        margin: 0 17px 0 35px;
+        font-weight: 900;
+      }
+      .central-item-input-wrapper {
+        display: flex;
+        flex: 1 1 0;
+      }
+      .input-element {
+        flex: 1 1 0;
+        margin-left: 10px;
+        padding: 0 10px;
+        border-radius: 4px;
+        color: $color_gray-light;
+        border: 1px solid $color_gray-light;
+      }
+      .input-button {
+        flex: 0 0 80px;
+        display: flex;
+        justify-content: center;
+        border-radius: 4px;
+        align-items: center;
+        background-color: $color_green-smooth;
+        color: $color_gray-whitened;
+        padding: 7px 0;
+        font-weight: 900;
+        margin-left: 10px;
+      }
+    }
+    &.settings-item {
+      flex: 0 0 175px;
+      width: 175px;
+      margin-left: 35px;
+
+      .profile-dropdown-placeholder {
+        font-size: $_font-size-small;
+        flex: 0 0 120px;
+        width: 120px;
+        cursor: pointer;
+      }
+      .configuration-item {
+        font-size: 22px;
+        flex: 0 0 55px;
+        width: 55px;
+      }
+    }
+  }
+}
