@@ -1,0 +1,33 @@
+<div id="list-loaned-entries-page" class="page-wrapper">
+    <page-main-header on-sort="onSort"
+                      on-filter="onFilter"
+                      filter-input="true"
+                      toggle-input="true"
+                      toggle="toggleView(type)"
+                      title="title"
+                      active-view-type="activeViewType"
+                      existing-types="existingTypes">
+    </page-main-header>
+    <div ng-if="activeViewType === 'breadcrumb' && hasEntriesToShow()"
+         class="page-content horizontal-separation">
+        <div class="page-section border-less max-width-250"
+             ng-repeat="entry in existingEntries track by $index">
+            <preview-actions-container content-model="entry"
+                                       container-class="{{getContainerClass(entry)}}"
+                                       icon-class="{{getEntryClassType(entry.entryType)}}">
+            </preview-actions-container>
+        </div>
+    </div>
+    <div ng-if="activeViewType === 'list' && hasEntriesToShow()"
+         class="page-content vertical-separation">
+        <list-actions-entry ng-repeat="entry in existingEntries track by $index"
+                            content-model="entry"
+                            container-class="page-list-item {{getContainerClass(entry)}}"
+                            icon-class="{{getEntryClassType(entry.entryType)}}">
+        </list-actions-entry>
+    </div>
+    <list-footer-summary ng-if="hasEntriesToShow()"></list-footer-summary>
+    <default-empty-state ng-if="!hasEntriesToShow()"
+                         content="emptyStateModel">
+    </default-empty-state>
+</div>

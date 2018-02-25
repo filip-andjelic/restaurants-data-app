@@ -1,0 +1,96 @@
+<div id="create-new-entry-page" class="page-wrapper">
+    <page-main-header title="title"
+                      create-new-entry="createNewEntry">
+    </page-main-header>
+    <div class="page-content horizontal-separation">
+        <div class="max-width-prc-30 page-section">
+            <div class="user-input-element">
+                <label for="entry-category">Choose new Entry category:</label>
+                <select id="entry-category"
+                        name="entry-category"
+                        ng-model="newEntryModel.entryType">
+                    <option ng-repeat="category in existingCategories track by $index"
+                            value="{{category.value}}">
+                        {{category.name}}
+                    </option>
+                </select>
+            </div>
+            <div ng-if="newEntryModel.entryType !== 'car'" class="user-input-element">
+                <label for="entry-name">Entry name:</label>
+                <input type="text"
+                       placeholder="C'mon, you can do it!"
+                       id="entry-name"
+                       name="entry-name"
+                       ng-model="newEntryModel.name">
+            </div>
+            <div ng-if="newEntryModel.entryType === 'car'" class="user-input-element">
+                <label for="entry-model">Which company does it belong?</label>
+                <select id="entry-model"
+                        name="entry-model"
+                        ng-model="newEntryModel.model">
+                    <option ng-repeat="model in existingModels track by $index"
+                            value="{{model}}">
+                        {{model}}
+                    </option>
+                </select>
+            </div>
+            <div ng-if="newEntryModel.entryType === 'car'" class="user-input-element">
+                <label for="entry-series">Which serie is it?</label>
+                <select id="entry-series"
+                        name="entry-series"
+                        ng-model="newEntryModel.serie">
+                    <option ng-repeat="serie in existingSeries track by $index"
+                            value="{{serie}}">
+                        {{serie}}
+                    </option>
+                </select>
+            </div>
+        </div>
+        <div class="max-width-prc-30 page-section">
+            <div ng-if="newEntryModel.entryType === 'car'" class="user-input-element">
+                <label for="entry-price">Enter the price of Entry:</label>
+                <input type="text"
+                       placeholder="It should be in dollars, you know..."
+                       id="entry-price"
+                       name="entry-price"
+                       ng-model="newEntryModel.price">
+            </div>
+            <div ng-if="newEntryModel.entryType !== 'car'" class="user-input-element">
+                <label for="entry-type">Which type does it belong to?</label>
+                <select id="entry-type"
+                        name="entry-type"
+                        ng-model="newEntryModel[entryTypeProperty]">
+                    <option ng-repeat="option in existingTypes track by $index"
+                            value="{{option}}">
+                        {{option | uppercase}}
+                    </option>
+                </select>
+            </div>
+            <div class="user-input-element">
+                <label for="entry-description">Short description for this Entry</label>
+                <textarea maxlength="200"
+                          cols="80"
+                          rows="10"
+                          placeholder="Some really good description goes here..."
+                          id="entry-description"
+                          name="entry-description"
+                          ng-model="newEntryModel.description"></textarea>
+            </div>
+        </div>
+        <div class="max-width-prc-30 page-section">
+            <div class="user-input-element">
+                <label>New Entry Preview</label>
+                <preview-container ng-if="afterSavingDataExists()"
+                                   content-model="afterSavingData"
+                                   container-class="{{afterSavingData.backgroundClass}}"
+                                   icon-class="{{afterSavingData.iconClass}}">
+                </preview-container>
+                <preview-container ng-if="!afterSavingDataExists()"
+                                   content-model="newEntryModel"
+                                   container-class="{{getContainerClass()}}"
+                                   icon-class="{{getEntryClassType(newEntryModel.entryType)}}">
+                </preview-container>
+            </div>
+        </div>
+    </div>
+</div>

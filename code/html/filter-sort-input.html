@@ -1,0 +1,23 @@
+<div class="filter-sort-input">
+    <div class="sort-input">
+        <select id="sort-entries"
+                name="sort-entries"
+                ng-model="sortType"
+                ng-change="handleSort(sortType)">
+            <option ng-repeat="option in existingTypes track by $index"
+                    value="{{option.value}}">
+                {{option.name}}
+            </option>
+            <option value="initial" selected>-- Sort Entries --</option>
+        </select>
+    </div>
+    <div class="filter-input">
+        <label class="small-label">Search Entries:</label>
+        <input type="text"
+               placeholder="Entry name..."
+               id="filter-entries"
+               name="filter-entries"
+               ng-model="filterInput"
+               ng-change="handleFilter(filterInput)">
+    </div>
+</div>

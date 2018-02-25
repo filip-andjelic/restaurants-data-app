@@ -1,0 +1,14 @@
+<div class="page-main-header">
+    <span class="main-title">{{title}}</span>
+    <div class="header-input-group">
+        <filter-sort-input ng-if="filterInput"
+                           on-sort="onSort(property)"
+                           on-filter="onFilter(input)"
+                           existing-types="existingTypes">
+        </filter-sort-input>
+        <toggle-view-input ng-if="toggleInput"></toggle-view-input>
+        <div ng-if="createNewEntry"
+             class="large-input-button user-input-button"
+             ng-click="create()">Create</div>
+    </div>
+</div>
