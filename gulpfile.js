@@ -85,7 +85,7 @@ gulp.task('bundleAppJsFiles', ['bundleThirdPartyJsFiles'], function() {
         config.codeDirectory.root + config.angularInputFile,
         config.codeDirectory.js])
         .pipe(concat(config.destDirectory.jsFile))
-        //.pipe(ngAnnotate())
+        .pipe(ngAnnotate())
         .pipe(gulp.dest(config.tmpDir));
 });
 gulp.task('compileSass', function () {
@@ -111,12 +111,12 @@ gulp.task('buildJs', ['bundleAppJsFiles'], function () {
         config.tmpDir + '/' + config.modulesBundleName,
         config.tmpDir + '/' + config.destDirectory.jsFile
         ])
-        /*.pipe(uglify.minifyJS({
+        .pipe(uglify.minifyJS({
             addSourceMaps: false,
             concat: true,
             concatFilename: config.destDirectory.jsFile,
             concatOutput: config.destDirectory.root,
-        }))*/
+        }))
         .pipe(concat(config.destDirectory.jsFile))
         .pipe(gulp.dest(config.destDirectory.root));
 });

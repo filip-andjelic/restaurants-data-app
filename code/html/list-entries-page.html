@@ -1,0 +1,12 @@
+<div id="list-entries-page" class="page-wrapper">
+    <div class="page-content horizontal-separation">
+        <div class="page-section max-width-450">
+            <text-search-box on-change="onFilter(input)"
+                             on-select="onItemSelect(item)"
+                             list="existingEntries"></text-search-box>
+        </div>
+        <div ng-if="selectedItem" class="page-section border-less max-width-350">
+            <display-window data="selectedItem"></display-window>
+        </div>
+    </div>
+</div>

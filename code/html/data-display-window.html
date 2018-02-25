@@ -1,0 +1,10 @@
+<div class="data-display-window">
+    <div class="data-image" style="background-image: url({{getImageUrl()}})"></div>
+    <h2 class="data-title"> {{data.name + ', ' + data.address.city}} </h2>
+    <p class="data-label"> {{data.address.street}} </p>
+    <p class="data-label"> Longitude: {{data.geolocation.longitude}}; Latitude {{data.geolocation.latitude}} </p>
+    <div class="review-wrapper">
+        <span class="rating-label {{getRatingClass(data.rating)}}"> <strong>{{data.rating}}</strong>/100 </span>
+        <span class="review-label"> {{data.counters.reviews}} reviews </span>
+    </div>
+</div>

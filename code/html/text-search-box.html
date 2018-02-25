@@ -1,0 +1,18 @@
+<div class="text-search-box">
+    <h4 class="box-title">Pronadji restoran</h4>
+    <p class="box-label">Ukucaj u polje ispod restoran koji bi zeleo da posetis</p>
+    <div class="input-box">
+        <input type="text"
+               placeholder="Restoran ..."
+               ng-model="inputModel"
+               ng-change="onFilter(inputModel)"
+               class="user-input-element large-item">
+        <div ng-if="list && list.length" class="input-result-list">
+            <div ng-repeat="item in list track by $index"
+                 ng-click="select(item)"
+                 class="result-item large-item">
+                <span class="item-title">Restoran {{item.name}}, {{item.address.city}}</span>
+            </div>
+        </div>
+    </div>
+</div>

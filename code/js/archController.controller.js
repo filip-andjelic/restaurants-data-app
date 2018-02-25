@@ -60,25 +60,4 @@ angular.module('archApp')
                 backgroundUrl: IMAGES_BASE + 'peti.jpg',
                 likeCount: 622
             }];
-
-            $scope.changePageView = function(item) {
-                setItemsToClose();
-                item.open = true;
-                openNewView(item);
-            };
-
-            $scope.$on('Action.Entry.edit-entry', function(event, params) {
-                var editedEntry = params.entry;
-
-                if (editedEntry) {
-                    $state.go('create_new', { data: editedEntry });
-                }
-            });
-            $scope.$on('Action.Entry.destroy-entry', function(event, params) {
-                var editedEntry = params.entry;
-
-                if (editedEntry) {
-                    DatabaseEntryCache.destroyEntry(editedEntry);
-                }
-            });
         }]);
