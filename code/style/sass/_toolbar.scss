@@ -68,4 +68,10 @@
       }
     }
   }
+
+  @media (max-width: 1225px) {
+    .central-item-title {
+      display: none;
+    }
+  }
 }
