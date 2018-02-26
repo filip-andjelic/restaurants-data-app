@@ -1,4 +1,4 @@
-# New Front-End Library App
+# AngularJS Combox Demo App
 
 This small one-page presentation demonstrates how to use MVC-like pattern in JavaScript to handle user input and corresponding data displaying. 
 Techs and libs used in this app are: 
